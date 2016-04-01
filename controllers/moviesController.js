@@ -1,32 +1,40 @@
-// app.movie.controller = {}
-
-// app.movie.controller.create = {
-
 function MoviesController() {
-  this.$movieName = $('#movie');
-};
+    this.$movieName = $('#movie');
+  };
 
 MoviesController.prototype.init = function() {
   var self = this
   $(':submit').click(function(event) {
     event.preventDefault();
-    var movie = self.$movieName.val();
+    var movieName = self.$movieName.val(); 
+  
+    $.ajax({
+  method: "GET",
+  url: "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&r=json",
+   }).done(function(data) {
+     var newMovie = new Movie(data) 
+     debugger
+     return newMovie;
+    })
+  });
+  debugger
+ } 
 
-  $.ajax({
-    method: "GET",
-    url: "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&r=json",
-    }).done(function(data) {
-      var newMovie = new app.movie.new(data) 
-      return newMovie;
-    })    
-  }); // ends submit jquery
-}; // ends prototype
 
-// function Render(MoviesController.init) {
+
+// MoviesController.prototype.search = function(init) {
+  
+  
+
+
+
+
+
+// render: function Render(MoviesController.init) {
 //   debugger
 // }
 
-
+// 
 
 
 

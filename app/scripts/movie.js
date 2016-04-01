@@ -1,9 +1,8 @@
-app.movie = {
-  new: function(data) {   
+function Movie (data) {   
     this.title = data.Title;
     this.year = data.Year;
     this.genre = data.Genre;
-    this.rating = data.Rating;
+    this.rating = data.Rated;
     this.plot = data.Plot
   }
-}
+  

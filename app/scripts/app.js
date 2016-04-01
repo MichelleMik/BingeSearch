@@ -4,6 +4,8 @@ var app = {}
 $(function() { // on document ready
   movieController = new MoviesController();
   movieController.init();
+  // movieController.search(returnedMovie)
+
 });
 
 
