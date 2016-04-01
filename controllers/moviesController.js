@@ -16,11 +16,15 @@ MoviesController.prototype.init = function() {
     method: "GET",
     url: "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&r=json",
     }).done(function(data) {
-      var test = new app.movie.new(data) 
-    } )
-    
+      var newMovie = new app.movie.new(data) 
+      return newMovie;
+    })    
   }); // ends submit jquery
 }; // ends prototype
+
+// function Render(MoviesController.init) {
+//   debugger
+// }
 
 
 
