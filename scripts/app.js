@@ -28,9 +28,14 @@ app.movie = {
         event.preventDefault();
         var movieTitle;
         movieTitle = $('#movie').val();  
+
+        var promise = app.movie.adapter.getBy(movieTitle).then(function(whatever){
+          //app.movie.controller.show.render(whatever)
+
         $('#movie').val("");
         var promise = app.movie.adapter.getBy(movieTitle).then(function(result){
           app.movie.controller.show.render(result)
+
         })
       },
       render: function(movie) {
@@ -50,10 +55,19 @@ app.movie = {
       method: "GET",
       url: "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&r=json",
       }).then(function(data) {
+
+       
+        var movieData = data;
+         debugger
+        var movie;
+        movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot)
+        
+
         var movieData = data;
         var movie;
         movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot, movieData.Poster)
         return movie;
+
      })
     }
   }
