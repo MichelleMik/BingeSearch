@@ -1,5 +1,6 @@
 $(function() {
   $('input:submit').click(app.movie.controller.show.init)
+  $('#movie').val("");
 })
 
 app = {
@@ -9,12 +10,13 @@ app = {
 app.movie = {
   model: {
     new: (function(){
-      function Movie (title, year, genre, rated, plot) {   
+      function Movie (title, year, genre, rated, plot, poster) {   
         this.title = title;
         this.year = year;
         this.genre = genre;
         this.rating = rated;
         this.plot = plot;
+        this.poster = poster;
       }
       return Movie;
     }())
@@ -26,11 +28,15 @@ app.movie = {
         event.preventDefault();
         var movieTitle;
         movieTitle = $('#movie').val();  
-        var promise = app.movie.adapter.getBy(movieTitle).then(function(whatever){
-          app.movie.controller.show.render(whatever)
+        var promise = app.movie.adapter.getBy(movieTitle).then(function(result){
+          app.movie.controller.show.render(result)
         })
       },
-      // put render
+      render: function(movie) {
+        $('.movie').append('<p>' + movie.title + '</p>' + '<br>'
+          + '<img src="' + movie.poster + '">'  
+          )
+      }
     }
   },
   adapter: {
@@ -38,11 +44,11 @@ app.movie = {
      return $.ajax({
       method: "GET",
       url: "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&r=json",
-      }).done(function(data) {
-        debugger
+      }).then(function(data) {
+        var movieData = data;
         var movie;
-        movie = new app.movie.model.new(data.Title, data.Year, data.Genre, data.Rated, data.Plot)
-        
+        movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot, movieData.Poster)
+        return movie;
      })
     }
   }
