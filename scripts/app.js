@@ -1,7 +1,6 @@
 $(function() {
   $('input:submit').click(app.movie.controller.show.init)
-  $('#movie').val("");
-})
+  }); 
 
 app = {
 
@@ -22,20 +21,26 @@ app.movie = {
     }())
   },
 
+
   controller: {
     show: {
       init: function(event) {
         event.preventDefault();
         var movieTitle;
         movieTitle = $('#movie').val();  
+        $('#movie').val("");
         var promise = app.movie.adapter.getBy(movieTitle).then(function(result){
           app.movie.controller.show.render(result)
         })
       },
       render: function(movie) {
-        $('.movie').append('<p>' + movie.title + '</p>' + '<br>'
+        $('.movie').append('<h1>' + movie.title + '</h1>'
+          + '<p>' + movie.plot + '</p>'
+          + '<p>' + movie.rating + '</p>'
+          + '<p>' + movie.genre + '</p>'
           + '<img src="' + movie.poster + '">'  
           )
+         
       }
     }
   },
