@@ -31,6 +31,7 @@ app.movie = {
           + '<p>' + movie.plot + '</p>'
           + '<p>' + movie.rating + '</p>'
           + '<p>' + movie.genre + '</p>'
+          + '<p>' + movie.year + '</p>'
           + '<img src="' + movie.poster + '">'  
           )
          
