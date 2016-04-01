@@ -27,7 +27,7 @@ app.movie = {
         var movieTitle;
         movieTitle = $('#movie').val();  
         var promise = app.movie.adapter.getBy(movieTitle).then(function(whatever){
-          app.movie.controller.show.render(whatever)
+          //app.movie.controller.show.render(whatever)
         })
       },
       // put render
@@ -38,10 +38,12 @@ app.movie = {
      return $.ajax({
       method: "GET",
       url: "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&r=json",
-      }).done(function(data) {
-        debugger
+      }).then(function(data) {
+       
+        var movieData = data;
+         debugger
         var movie;
-        movie = new app.movie.model.new(data.Title, data.Year, data.Genre, data.Rated, data.Plot)
+        movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot)
         
      })
     }
