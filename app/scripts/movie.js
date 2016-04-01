@@ -4,6 +4,6 @@ app.movie = {
     this.title = data.Title
   }
 
-
+sadsadsadjkldasd
 
 }
