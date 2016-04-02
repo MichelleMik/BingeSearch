@@ -24,7 +24,7 @@ app.review = {
       },
       render: function(reviews) {
         reviews.forEach(function (review) {
-          $('.review.headline').append('<a href="' + review.link + '">' + review.headline + '</a><br>')  
+          $('#myDropdown .review').append('<li><a href="' + review.link + '">' + review.headline + '</a></li><br>')  
         })
       }
   }
