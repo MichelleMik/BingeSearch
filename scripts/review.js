@@ -2,10 +2,11 @@
 app.review = {
   model: {
     new: (function(){
-      function Review (headline, byline, link) {   
+      function Review (headline, byline, link, summary) {   
         this.headline = headline;
         this.byline = byline;
         this.link = link;
+        this.summary = summary
       }
       return Review;
     }())
@@ -17,15 +18,15 @@ app.review = {
         event.preventDefault();
         var movieTitle;
         movieTitle = $('#movie').val(); 
-        // $('#movie').val("");
         var promise = app.review.adapter.getBy(movieTitle).then(function(result){
             app.review.controller.show.render(result)
         })
       },
       render: function(reviews) {
         reviews.forEach(function (review) {
-          $('#myDropdown .review').append('<li><a href="' + review.link + '"class ="review-link">' + review.headline + '</a></li><br>')  
+          $('#myDropdown .review').append('<li><a href="' + review.link + '"class ="review-link">' + review.headline + '</a><p>' + review.summary + '</p></li><br>')  
         })
+        $('#movie').val("");
       }
   }
 },
@@ -43,7 +44,7 @@ app.review = {
             alert("Sorry no review found");
          } else {
           reviewData.results.forEach(function(i) {
-            review = new app.review.model.new(i.link.suggested_link_text, i.byline, i.link.url)
+            review = new app.review.model.new(i.link.suggested_link_text, i.byline, i.link.url, i.summary_short)
             allReviews.push(review)      
           })
           }
