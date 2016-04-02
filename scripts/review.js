@@ -22,8 +22,10 @@ app.review = {
             app.review.controller.show.render(result)
         })
       },
-      render: function(review) {
-        $('.review.headline').append('<a href="' + review.link + '">' + review.headline + '</a>')
+      render: function(reviews) {
+        reviews.forEach(function (review) {
+          $('.review.headline').append('<a href="' + review.link + '">' + review.headline + '</a><br>')  
+        })
       }
   }
 },
@@ -45,7 +47,7 @@ app.review = {
             allReviews.push(review)      
           })
           }
-        return review;
+        return allReviews;
         })
      }
     }
