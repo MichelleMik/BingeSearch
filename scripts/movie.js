@@ -27,11 +27,11 @@ app.movie = {
         })
       },
       render: function(movie) {
-        $('.movie').append('<h1>' + movie.title + '</h1>'
-          + '<p>' + movie.plot + '</p>'
-          + '<p>' + movie.rating + '</p>'
-          + '<p>' + movie.genre + '</p>'
-          + '<p>' + movie.year + '</p>'
+        $('.movie').append('<h1 class="title">' + "- " + movie.title + " -" + '</h1>'
+          + '<div class="plot">' + movie.plot + '</div>'
+          + '<p>' + 'Rated: ' + movie.rating + '</p>'
+          + '<p>' + 'Genre: ' + movie.genre + '</p>'
+          + '<p>' + 'Year: ' + movie.year + '</p>'
           + '<img src="' + movie.poster + '">'  
           )
          
