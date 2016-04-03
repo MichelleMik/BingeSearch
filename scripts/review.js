@@ -27,6 +27,14 @@ app.review = {
           $('#myDropdown .review').append('<li><a href="' + review.link + '"class ="review-link">' + review.headline + '</a><p>' + review.summary + '</p></li><br>')  
         })
         $('#movie').val("");
+        // $('input:submit').click(function(){
+        // if ($('#reviewlist').children().length > 0){
+        //   //debugger;
+        //      //$('#articlelist').empty();
+        //      //$('#reviewlist').empty();
+        //     $('.dropdown').empty();
+        //     }
+        // })
       }
   }
 },
