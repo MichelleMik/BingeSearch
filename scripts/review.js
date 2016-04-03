@@ -18,25 +18,29 @@ app.review = {
         event.preventDefault();
         var movieTitle;
         movieTitle = $('#movie').val(); 
+
         var promise = app.review.adapter.getBy(movieTitle).then(function(result){
             app.review.controller.show.render(result)
         })
       },
       render: function(reviews) {
         reviews.forEach(function (review) {
-          $('#myDropdown .review').append('<li><a href="' + review.link + '"class ="review-link">' + review.headline + '</a><p>' + review.summary + '</p></li><br>')  
+          $('#reviewlist').append('<li><a href="' + review.link + '"class ="review-link">' + review.headline + '</a><p>' + review.summary + '</p></li><br>')  
         })
         $('#movie').val("");
-        // $('input:submit').click(function(){
-        // if ($('#reviewlist').children().length > 0){
-        //   //debugger;
-        //      //$('#articlelist').empty();
-        //      //$('#reviewlist').empty();
-        //     $('.dropdown').empty();
-        //     }
-        // })
-      }
-  }
+  //        $('input:submit').click(function(){
+  //        if ($('#articlelist').children().length == 0){
+  //       //   //debugger;
+  //           $('#articlelist')
+  //       //      //$('#reviewlist').empty();
+  //       //     $('.dropdown').empty();
+  //       //     }
+  //       // })
+  //     } else {
+  //        $('#articlelist').empty();
+     }
+   }
+  // });
 },
 
   adapter: {
@@ -61,5 +65,6 @@ app.review = {
      }
     }
   }
+
 
 

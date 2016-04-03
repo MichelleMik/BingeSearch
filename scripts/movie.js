@@ -34,17 +34,17 @@ app.movie = {
           + '<p>' + movie.year + '</p>'
           + '<img src="' + movie.poster + '">'  
           )
-         // $('input:submit').click(function(){
-         //   $('.movie').val('');
-         //  })
-         $('input:submit').click(function(){
-        if ($('#articlelist').children().length > 0){
-          //debugger;
-             $('#articlelist').empty();
-             $('#reviewlist').empty();
-             $('.movie').empty();
-            }
-        })
+          // $('input:submit').click(function(){
+          //   $('.movie').val('');
+          //  })
+        //  $('input:submit').click(function(){
+        // if ($('#articlelist').children().length > 0){
+        //   debugger;
+        //      $('#articlelist h2').children().empty();
+        //      $('#reviewlist h2').children().empty();
+        //      $('.movie').empty();
+        //     }
+        // })
          
       }
     }

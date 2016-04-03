@@ -17,25 +17,26 @@ app.article  = {
         event.preventDefault();
         var movieTitle;
         movieTitle = $('#movie').val(); 
+     
         var promise = app.article.adapter.getBy(movieTitle).then(function(result){
             app.article.controller.show.render(result)
         })
       },
       render: function(relatedArticles) {
         relatedArticles.forEach(function (article) {
-          $('#myDropdown .article').append('<li><a href="' + article.webUrl+ '"class ="article-link">' + article.headLine+ '</a><p>' + article.leadParagragh + '</p>'  + '</li><br>')  
+          $('#articlelist').append('<li><a href="' + article.webUrl+ '"class ="article-link">' + article.headLine+ '</a><p>' + article.leadParagragh + '</p>'  + '</li><br>')  
         })
         $('#movie').val("");
-        // $('input:submit').click(function(){
-        // if ($('#articlelist').children().length > 0){
-        //   //debugger;
-        //      $('.dropdown').empty();
-        //      //$('#reviewlist').empty();
-        //      //$('.movie').empty();
-        //     }
-        // })
-      }
-  }
+         $('input:submit').click(function(){
+          if ($('#reviewlist').children().length > 0){
+  //       //   //debugger;
+               $('#articlelist').empty();
+               $('#reviewlist').empty();
+              $('.movie').empty();
+              }
+          })
+       }
+   }
 },
 
   adapter: {
@@ -62,5 +63,6 @@ app.article  = {
      }
     }
   }
+
 
 
