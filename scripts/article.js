@@ -26,18 +26,17 @@ app.article  = {
         relatedArticles.forEach(function (article) {
           $('#articlelist').append('<li><a href="' + article.webUrl+ '"class ="article-link">' + article.headLine+ '</a><p>' + article.leadParagragh + '</p>'  + '</li><br>')  
         })
-        $('#movie').val("");
-         $('input:submit').click(function(){
-          if ($('#reviewlist').children().length > 0){
-  //       //   //debugger;
-               $('#articlelist').empty();
-               $('#reviewlist').empty();
+          $('#movie').val("");
+          $('input:submit').click(function(){
+            if ($('#reviewlist').children().length > 0){
+              $('#articlelist').empty();
+              $('#reviewlist').empty();
               $('.movie').empty();
-              }
+            }
           })
-       }
-   }
-},
+        }
+      }
+    },
 
   adapter: {
     getBy: function(movieTitle) { 
@@ -47,22 +46,21 @@ app.article  = {
       }).then(function(data) {
         console.log(data);
       
-         var articleData = data.response.docs;
+        var articleData = data.response.docs;
         var allArticles = [];
-        // var review;
-       if (articleData=== 0) {
-             alert("Sorry no review found");
-          } else {
-           articleData.forEach(function(i) {
-           article = new app.article.model.new(i.headline.main, i.snippet, i.web_url)
-             allArticles.push(article)      
-           })
-           }
+        if (articleData=== 0) {
+          alert("Sorry no review found");
+        } else {
+          articleData.forEach(function(i) {
+            article = new app.article.model.new(i.headline.main, i.snippet, i.web_url)
+            allArticles.push(article)      
+          })
+        }
          return allArticles;
-        })
-     }
+      })
     }
   }
+}
 
 
 

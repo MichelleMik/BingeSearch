@@ -21,7 +21,6 @@ app.movie = {
         event.preventDefault();
         var movieTitle;
         movieTitle = $('#movie').val();  
-        // $('#movie').val("");
         var promise = app.movie.adapter.getBy(movieTitle).then(function(result){
           app.movie.controller.show.render(result)
         })
@@ -34,18 +33,6 @@ app.movie = {
           + '<p>' + 'Year: ' + movie.year + '</p>'
           + '<img src="' + movie.poster + '">'  
           )
-          // $('input:submit').click(function(){
-          //   $('.movie').val('');
-          //  })
-        //  $('input:submit').click(function(){
-        // if ($('#articlelist').children().length > 0){
-        //   debugger;
-        //      $('#articlelist h2').children().empty();
-        //      $('#reviewlist h2').children().empty();
-        //      $('.movie').empty();
-        //     }
-        // })
-         
       }
     }
   },
