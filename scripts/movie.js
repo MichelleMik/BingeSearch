@@ -60,6 +60,11 @@ app.movie = {
         
         if (movieData.Error) {
           $('#movie').empty();
+          $('.movie').empty();
+          $('#newsworthy').hide();
+          $('#reviewtag').hide();
+          $('#articletag').hide();
+
           $('.movie').append('<h2>' + movieData.Error + '</h2>')
         }
         else {
