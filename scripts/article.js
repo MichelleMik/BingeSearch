@@ -17,7 +17,6 @@ app.article  = {
         event.preventDefault();
         var movieTitle;
         movieTitle = $('#movie').val(); 
-     
         var promise = app.article.adapter.getBy(movieTitle).then(function(result){
             app.article.controller.show.render(result)
         })

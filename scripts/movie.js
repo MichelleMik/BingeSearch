@@ -20,10 +20,16 @@ app.movie = {
       init: function(event) {
         event.preventDefault();
         var movieTitle;
-        movieTitle = $('#movie').val();  
+        if ($('#movie').val() === "") {
+            $('.movie').append('<h2>Please enter a movie</h2>')
+            $('#reviewlist').hide()
+          } 
+        else {
+          movieTitle = $('#movie').val();  
         var promise = app.movie.adapter.getBy(movieTitle).then(function(result){
           app.movie.controller.show.render(result)
         })
+        }  
       },
       render: function(movie) {
         $('.movie').append('<h1 class="title">' + "- " + movie.title + " -" + '</h1>'
@@ -42,16 +48,14 @@ app.movie = {
       method: "GET",
       url: "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&r=json",
       }).then(function(data) {
-        
         var movieData = data;
-        
         if (movieData.Error) {
           $('#movie').empty();
           $('.movie').empty();
           $('#newsworthy').hide();
           $('#reviewtag').hide();
           $('#articletag').hide();
-
+          $('#articlelist').hide();
           $('.movie').append('<h2>' + movieData.Error + '</h2>')
         }
         else {
@@ -63,7 +67,7 @@ app.movie = {
           movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot, movieData.Poster)
         return movie;
       }
-     })
+     })     
     }
   }
 }
