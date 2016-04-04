@@ -1,0 +1,32 @@
+.bgimage {
+  background-image: url(../images/header.jpg); 
+  background-position: center center;
+  background-size: cover;
+  height: 500px;
+}
+
+.container {
+  text-align: center;
+  
+}
+.top {
+  min-height: 45%;
+  color: white;
+  
+}
+
+.movie .title {
+  color: #343434;
+}
+
+.movie .plot {
+  border-radius: 5px;
+  min-height: 50px;
+  line-height: 25px;
+  font-size: 1.3em;
+  background-color: #eee;
+  border: 1px solid white;
+  padding: 10px;
+  margin-bottom: 10px;
+
+}
