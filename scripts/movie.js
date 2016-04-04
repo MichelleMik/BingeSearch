@@ -21,11 +21,14 @@ app.movie = {
         event.preventDefault();
         var movieTitle;
         if ($('#movie').val() === "") {
-            $('.movie').append('<h2>Please enter a movie</h2>')
-            $('#reviewlist').hide()
+            $('.movie').empty();
+            $('.movie').append('<h2>Please enter a movie</h2>');
+            $('.info').hide();
           } 
         else {
-          movieTitle = $('#movie').val();  
+
+          movieTitle = $('#movie').val();
+          $('.info').show()  
         var promise = app.movie.adapter.getBy(movieTitle).then(function(result){
           app.movie.controller.show.render(result)
         })
@@ -52,17 +55,12 @@ app.movie = {
         if (movieData.Error) {
           $('#movie').empty();
           $('.movie').empty();
-          $('#newsworthy').hide();
-          $('#reviewtag').hide();
-          $('#articletag').hide();
-          $('#articlelist').hide();
+          $('.info').hide();
           $('.movie').append('<h2>' + movieData.Error + '</h2>')
         }
         else {
           $('.movie').empty();
-          $('#newsworthy').show();
-          $('#reviewtag').show();
-          $('#articletag').show();
+          $('.info').show();
           var movie;
           movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot, movieData.Poster)
         return movie;

@@ -1,8 +1,7 @@
 $(function() {
  
-  $('#newsworthy').hide();
-  $('#reviewtag').hide();
-  $('#articletag').hide();
+  
+  $('.info').hide();
 
   $('input:submit').click(app.movie.controller.show.init)
   $('input:submit').click(app.review.controller.show.init)
