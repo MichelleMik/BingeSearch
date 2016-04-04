@@ -52,14 +52,13 @@ app.review = {
         var reviewData = data;
         var allReviews = [];
         var review;
-        if (data.num_results === 0) {
-            alert("Sorry no review found");
-         } else {
+        // if (data.num_results === 0) {
+        //  } else {
           reviewData.results.forEach(function(i) {
             review = new app.review.model.new(i.link.suggested_link_text, i.byline, i.link.url, i.summary_short)
             allReviews.push(review)      
           })
-          }
+          // }
         return allReviews;
         })
      }

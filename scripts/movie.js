@@ -55,13 +55,22 @@ app.movie = {
       method: "GET",
       url: "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&r=json",
       }).then(function(data) {
-        $('#newsworthy').show();
-        $('#reviewtag').show();
-       $('#articletag').show();
+        
         var movieData = data;
-        var movie;
-        movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot, movieData.Poster)
+        
+        if (movieData.Error) {
+          $('#movie').empty();
+          $('.movie').append('<h2>' + movieData.Error + '</h2>')
+        }
+        else {
+          $('.movie').empty();
+          $('#newsworthy').show();
+          $('#reviewtag').show();
+          $('#articletag').show();
+          var movie;
+          movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot, movieData.Poster)
         return movie;
+      }
      })
     }
   }
