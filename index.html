@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
     <script type="text/javascript" src="scripts/movie.js"></script>
@@ -55,13 +56,13 @@
     <div class="container">
       <div class="movie"></div>
         <div class="dropdown">
-     <h1 class="dropbtn">Newsworthy Mentions</h1>
+     <h1 class="dropbtn" id="newsworthy">Newsworthy Mentions</h1>
       <!--<div id="myDropdown" class="dropdown-content">-->
-      <h2> Reviews </h2>
+      <h2 id="reviewtag"> Reviews </h2>
         <ul id="reviewlist">
             <!--<div class="review"></div>-->
         </ul>
-        <h2>Articles </h2>
+        <h2 id="articletag">Articles </h2>
         <ul id="articlelist"> 
             <!--<div class="article"></div>-->
         </ul>

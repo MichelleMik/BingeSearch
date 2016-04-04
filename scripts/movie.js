@@ -55,6 +55,9 @@ app.movie = {
       method: "GET",
       url: "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&r=json",
       }).then(function(data) {
+        $('#newsworthy').show();
+        $('#reviewtag').show();
+       $('#articletag').show();
         var movieData = data;
         var movie;
         movie = new app.movie.model.new(movieData.Title, movieData.Year, movieData.Genre, movieData.Rated, movieData.Plot, movieData.Poster)
