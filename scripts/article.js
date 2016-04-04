@@ -23,7 +23,7 @@ app.article  = {
       },
       render: function(relatedArticles) {
         relatedArticles.forEach(function (article) {
-          $('#articlelist').append('<li><a href="' + article.webUrl+ '"class ="article-link">' + article.headLine+ '</a><p>' + article.leadParagragh + '</p>'  + '</li><br>')  
+          $('#articlelist').append('<li><a target="_blank" href="' + article.webUrl+ '"class ="article-link">' + article.headLine+ '</a><p>' + article.leadParagragh + '</p>'  + '</li><br>')  
         })
           $('#movie').val("");
           $('input:submit').click(function(){

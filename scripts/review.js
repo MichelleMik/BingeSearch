@@ -25,7 +25,7 @@ app.review = {
       },
       render: function(reviews) {
         reviews.forEach(function (review) {
-          $('#reviewlist').append('<li><a href="' + review.link + '"class ="review-link">' + review.headline + '</a><p>' + review.summary + '</p></li><br>')  
+          $('#reviewlist').append('<li><a target="_blank" href="' + review.link + '"class ="review-link">' + review.headline + '</a><p>' + review.summary + '</p></li><br>')  
         })
         $('#movie').val("");
   //        $('input:submit').click(function(){
